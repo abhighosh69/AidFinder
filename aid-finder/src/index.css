@@ -4,5 +4,9 @@
 @tailwind utilities;
 
 .active hr {
-    @apply block mx-auto w-full h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg;
+    @apply block mx-auto w-full h-1 bg-gradient-custom-color rounded-lg;
+}
+
+:root{
+    background-color: #FDFFFC;
 }
