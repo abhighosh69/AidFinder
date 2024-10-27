@@ -10,3 +10,7 @@
 :root{
     background-color: #FDFFFC;
 }
+
+::-webkit-scrollbar{
+    @apply hidden;
+}
