@@ -8,6 +8,7 @@ import Donner from "./pages/Donner";
 import Login from "./pages/Login";
 import MyAppointment from "./pages/MyAppointments";
 import MyProfile from "./pages/MyProfile";
+import Appointment from "./pages/Appointment";
 
 import Navbar from "./components/Navbar";
 
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/donner" element={<Donner />} />
         <Route path="/login" element={<Login />} />
         <Route path="/my-appointment" element={<MyAppointment />} />
+        <Route path="/appointment/:docId" element={<Appointment/>}/>
         <Route path="/my-profile" element={<MyProfile />} />
       </Routes>
     </div>
