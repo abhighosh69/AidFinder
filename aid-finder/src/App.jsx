@@ -12,6 +12,7 @@ import MyProfile from "./pages/MyProfile";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Doctor from "./pages/Doctor";
 
 const App = () => {
   return (
@@ -21,12 +22,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/hospital" element={<Hospitals />} />
+        <Route path="/hospitals" element={<Hospitals />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/donner" element={<Doneters />} />
         <Route path="/login" element={<Login />} />
         <Route path="/my-appointment" element={<MyAppointment />} />
+        <Route path="/doctors" element={<Doctor />} />
+        <Route path="/doctors/:speciality" element={<Doctor />} />
         <Route path="/my-appointment/:docId" element={<MyAppointment />} />
         <Route path="/my-profile" element={<MyProfile />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
