@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Doctor from "./pages/Doctor";
+import BookAppointments from "./pages/BookAppointments";
 
 const App = () => {
   return (
@@ -30,7 +31,7 @@ const App = () => {
         <Route path="/my-appointment" element={<MyAppointment />} />
         <Route path="/doctors" element={<Doctor />} />
         <Route path="/doctors/:speciality" element={<Doctor />} />
-        <Route path="/my-appointment/:docId" element={<MyAppointment />} />
+        <Route path="/book-appointment/:docId" element={<BookAppointments />} />
         <Route path="/my-profile" element={<MyProfile />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
