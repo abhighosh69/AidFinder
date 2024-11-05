@@ -9,49 +9,70 @@ const BookAppointments = () => {
   const { doctors, currencySymbol } = useContext(AppContext);
   const dayOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-  const [docInfo, setDocInfo] = useState("");
-  const [docSlots, setDocSlots] = useState([]);
+  const [docInfo, SetDocInfo] = useState("");
+  const [docSlots, SetDocSlots] = useState([]);
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState("");
 
   const fetchDocInfo = async () => {
     const docInfo = doctors.find((doc) => doc._id === docId);
-    setDocInfo(docInfo);
+    SetDocInfo(docInfo);
+    console.log(docInfo);
   };
 
   const getAvailableSlots = async () => {
-    setDocSlots([]);
-    let today = new Date();
-
+    SetDocSlots([]);
+  
+    // Getting the current date and time
+    let now = new Date();
+    let today = new Date(); // Ensure 'today' is defined
+  
     for (let i = 0; i < 7; i++) {
+      // Getting date with index
       let currentDate = new Date(today);
       currentDate.setDate(today.getDate() + i);
+  
+      // Setting end time of the date with index
       let endTime = new Date();
       endTime.setDate(today.getDate() + i);
       endTime.setHours(21, 0, 0, 0);
-
+  
+      // Setting hours
       if (today.getDate() === currentDate.getDate()) {
-        currentDate.setHours(currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10);
+        currentDate.setHours(
+          currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
+        );
         currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
       } else {
         currentDate.setHours(10);
         currentDate.setMinutes(0);
       }
-
+  
       let timeSlots = [];
+  
       while (currentDate < endTime) {
-        let formattedTime = currentDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-        timeSlots.push({
-          datetime: new Date(currentDate),
-          time: formattedTime,
-        });
+        // Check if the current time slot is in the future
+        if (currentDate > now) {
+          let formattedTime = currentDate.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+  
+          // Add valid future slots to the array
+          timeSlots.push({
+            datetime: new Date(currentDate),
+            time: formattedTime,
+          });
+        }
+  
+        // Increment current time by 30 mins
         currentDate.setMinutes(currentDate.getMinutes() + 30);
       }
-
-      setDocSlots((prev) => [...prev, timeSlots]);
+  
+      SetDocSlots((prev) => [...prev, timeSlots]);
     }
   };
-
+  
   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
@@ -59,6 +80,10 @@ const BookAppointments = () => {
   useEffect(() => {
     getAvailableSlots();
   }, [docInfo]);
+
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
 
   return (
     docInfo && (
@@ -86,6 +111,7 @@ const BookAppointments = () => {
                 {docInfo.experience}
               </button>
             </div>
+
             {/* ------- Doctor About ------- */}
             <div>
               <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
@@ -108,7 +134,8 @@ const BookAppointments = () => {
         {/* ------- Booking Slots ------- */}
         <div className="sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700">
           <p>Booking Slots</p>
-          {docSlots.length === 0 || (docSlots[slotIndex] && docSlots[slotIndex].length === 0) ? (
+          {docSlots.length === 0 ||
+          (docSlots[slotIndex] && docSlots[slotIndex].length === 0) ? (
             <div className="mt-4 p-4 bg-red-200 text-red-800 rounded">
               No available slots for this doctor.
             </div>
@@ -119,7 +146,9 @@ const BookAppointments = () => {
                   <div
                     onClick={() => setSlotIndex(index)}
                     className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${
-                      slotIndex === index ? "bg-primary text-white" : "border border-gray-200"
+                      slotIndex === index
+                        ? "bg-primary text-white"
+                        : "border border-gray-200"
                     }`}
                     key={index}
                   >
@@ -133,7 +162,9 @@ const BookAppointments = () => {
                   <p
                     onClick={() => setSlotTime(item.time)}
                     className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${
-                      item.time === slotTime ? 'bg-primary text-white' : 'text-gray-700 border border-gray-300'
+                      item.time === slotTime
+                        ? "bg-primary text-white"
+                        : "text-gray-700 border border-gray-300"
                     }`}
                     key={index}
                   >
