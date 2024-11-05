@@ -12,11 +12,11 @@ const About = () => {
 
       <div className="my-10 flex flex-col md:flex-row gap-12">
         <img
-          className="w-full md:max-w-[360px]"
+          className="w-full md:max-w-[420px]"
           src={assets.about_image}
           alt="About Image"
         />
-        <div className="flex flex-col justify-center gap-6 md:w-2/4 text-base text-gray-600">
+        <div className="flex flex-col justify-center gap-6 md:w-2/4 text-lg text-gray-600">
           <p>
             Welcome to Aid Finder, your trusted partner in managing your
             healthcare needs conveniently and efficiently. At Aid Finder, we

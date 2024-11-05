@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors:{
-        "primary": "#235789"
+        "primary": "#235789",
+        "secondary":"#FDFFFC",
       },
       /* create account button color */
       backgroundImage: {
