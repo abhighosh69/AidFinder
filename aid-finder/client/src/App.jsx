@@ -8,12 +8,12 @@ import Doneters from "./pages/Doneters";
 import Login from "./pages/Login";
 import MyAppointment from "./pages/MyAppointments";
 import MyProfile from "./pages/MyProfile";
-
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Doctor from "./pages/Doctor";
 import BookAppointments from "./pages/BookAppointments";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (
@@ -28,6 +28,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/donner" element={<Doneters />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/my-appointment" element={<MyAppointment />} />
         <Route path="/doctors" element={<Doctor />} />
         <Route path="/doctors/:speciality" element={<Doctor />} />

@@ -7,10 +7,10 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const [showButton, setShowButton] = useState(false);
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState(false);
 
   const handleCreateAccount = () => {
-    navigate("/login");
+    navigate("/sign-up");
   };
 
   const handelToHome = () => {
