@@ -1,13 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import FilterButton from "../components/FilterButton";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
-import { useState } from "react";
 import { specialityData } from "../assets/assetsFrontend/assets";
 
 const Doctor = () => {
   const navigate = useNavigate();
   const { speciality } = useParams();
   const [filterDoc, setFilterDoc] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
   const { doctors } = useContext(AppContext);
 
   const applyFilter = () => {
@@ -31,17 +32,22 @@ const Doctor = () => {
 
       {/* ------- Left Side ------- */}
       <div className="flex flex-col sm:flex-row items-start gap-5 mt-5">
-        <div className="flex flex-col gap-4 text-lg text-gray-600">
+        <FilterButton showFilter={showFilter} setShowFilter={setShowFilter}/>
+        <div
+          className={`flex-col gap-4 text-lg text-gray-600 ${
+            showFilter ? "flex" : "hidden sm:flex"
+          }`}
+        >
           {specialityData.map((data) => (
-            <p
+            <button
               key={data.speciality}
               onClick={() => handleNavigation(data.speciality)}
-              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
+              className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer text-left ${
                 speciality === data.speciality ? "bg-blue-100 text-black" : ""
               }`}
             >
               {data.speciality}
-            </p>
+            </button>
           ))}
         </div>
 
@@ -55,7 +61,11 @@ const Doctor = () => {
               key={item._id}
               className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
             >
-              <img className="bg-blue-50" src={item.image} alt={`Picture of Dr. ${item.name}`} />
+              <img
+                className="bg-blue-50"
+                src={item.image}
+                alt={`Picture of Dr. ${item.name}`}
+              />
               <div className="p-4">
                 <div className="flex items-center gap-2 text-sm text-center text-green-500">
                   <p className="w-2 h-2 bg-green-500 rounded-full"></p>
