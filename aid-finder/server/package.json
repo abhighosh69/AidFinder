@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "module": "index.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.1",
+    "server": "file:"
+  },
+  "scripts": {
+    "start": "bun index.js"
+  }
+}
