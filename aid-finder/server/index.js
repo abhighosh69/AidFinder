@@ -31,5 +31,5 @@ passportMiddleware(app);
 app.use(authLoginRoutes);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`The app listening on port http://localhost:${port}`);
 });
