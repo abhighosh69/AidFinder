@@ -39,6 +39,7 @@ const doctorSchema = new mongoose.Schema(
     date: { type: String, required: [true, "Date is required"] },
     slots_booked: { type: Object, default: {} },
   },
+  /* Adding {minimize:false} ensures the slots_booked field remains in the database even if it's empty. */
   { minimize: false, timestamps: true }
 );
 

@@ -10,6 +10,7 @@ To run:
 
 ```bash
 bun run index.js
+bun run start
 ```
 
 This project was created using `bun init` in bun v1.1.33. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
