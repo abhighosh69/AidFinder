@@ -1,11 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [userType, setUserType] = useState("normal"); // Default to normal user
+
+  const handleUserTypeChange = (e) => {
+    setUserType(e.target.value);
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-secondary">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
         <h1 className="mb-3 text-3xl font-semibold text-center">Login</h1>
         <form noValidate="" action="" className="space-y-6">
+          {/* User Type Selection */}
+          <div className="space-y-1 text-sm">
+            <label htmlFor="userType" className="block text-gray-400">
+              Select User Type
+            </label>
+            <div className="flex space-x-8">
+              <div className="flex items-center">
+                <input
+                  type="radio"
+                  name="userType"
+                  id="normal"
+                  value="normal"
+                  checked={userType === "normal"}
+                  onChange={handleUserTypeChange}
+                  className="hidden peer"
+                />
+                <label
+                  htmlFor="normal"
+                  className="peer-checked:bg-gradient-custom-color peer-checked:text-gray-900 cursor-pointer text-gray-400 font-semibold py-2 px-4 rounded-full border-2 border-gray-700 transition duration-300 ease-in-out hover:bg-gradient-custom-color hover:text-gray-900"
+                >
+                  Normal User
+                </label>
+              </div>
+              <div className="flex items-center">
+                <input
+                  type="radio"
+                  name="userType"
+                  id="doctor"
+                  value="doctor"
+                  checked={userType === "doctor"}
+                  onChange={handleUserTypeChange}
+                  className="hidden peer"
+                />
+                <label
+                  htmlFor="doctor"
+                  className="peer-checked:bg-gradient-custom-color peer-checked:text-gray-900 cursor-pointer text-gray-400 font-semibold py-2 px-4 rounded-full border-2 border-gray-700 transition duration-300 ease-in-out hover:bg-gradient-custom-color hover:text-gray-900"
+                >
+                  Doctor
+                </label>
+              </div>
+            </div>
+          </div>
+
+          {/* Username */}
           <div className="space-y-1 text-sm">
             <label htmlFor="username" className="block text-gray-400">
               Username
@@ -15,9 +65,11 @@ const Login = () => {
               name="username"
               id="username"
               placeholder="Username"
-              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+              className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
             />
           </div>
+
+          {/* Password */}
           <div className="space-y-1 text-sm">
             <label htmlFor="password" className="block text-gray-400">
               Password
@@ -27,7 +79,7 @@ const Login = () => {
               name="password"
               id="password"
               placeholder="Password"
-              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+              className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
             />
             <div className="flex justify-end text-xs text-gray-400">
               <a rel="noopener noreferrer" href="#">
@@ -35,10 +87,14 @@ const Login = () => {
               </a>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400">
+
+          {/* Login Button */}
+          <button className="w-full px-8 py-3 font-semibold rounded-md bg-gradient-custom-color text-gray-900">
             Sign in
           </button>
         </form>
+
+        {/* Social Login */}
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
           <p className="px-3 text-sm text-gray-400">
