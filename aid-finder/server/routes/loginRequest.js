@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-
+import userModel from "../models/userModel.js";
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -18,7 +18,7 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
   (req, res) => {
-    res.redirect("/profile");
+    res.redirect("http://localhost:5173/home");
   }
 );
 

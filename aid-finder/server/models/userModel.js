@@ -33,6 +33,11 @@ const userSchema = new mongoose.Schema(
       default: "0000000000",
       match: [/^\d{10}$/, "Invalid phone number format"],
     },
+    role: {
+      type: String,
+      enum: ["user", "doctor"], // Allowed roles
+      default: "user", // Default role
+    },
   },
   { timestamps: true }
 );

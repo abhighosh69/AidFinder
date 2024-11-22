@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 
 const SignUp = () => {
+
   const [role, setRole] = useState("user"); // Default role: user
+
+  const handelGoogleLoginBackend = async () => {
+    window.location.href = import.meta.env.VITE_BACKEND_GOOGLE_AUTH_URL;
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-secondary">
@@ -22,6 +27,7 @@ const SignUp = () => {
         </p>
         <div className="my-6 space-y-4">
           <button
+          onClick={handelGoogleLoginBackend}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400"
@@ -64,13 +70,16 @@ const SignUp = () => {
                 <label htmlFor="password" className="text-sm">
                   Password
                 </label>
-                <a
+
+                {/* later */}
+
+                {/* <a
                   rel="noopener noreferrer"
                   href="#"
                   className="text-xs hover:underline text-gray-400"
                 >
                   Forgot password?
-                </a>
+                </a> */}
               </div>
               <input
                 type="password"
