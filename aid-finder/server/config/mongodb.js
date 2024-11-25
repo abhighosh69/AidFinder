@@ -16,7 +16,7 @@ const connectDB = async () => {
     });
 
     // Connect to the MongoDB database
-    await mongoose.connect(`${process.env.MONGODB_URI}/aidfinder`);
+    await mongoose.connect(`${process.env.MONGODB_URI}`);
   } catch (error) {
     console.error(`Failed to connect to the database: ${error.message}`);
     process.exit(1); // Exit the process if the database connection fails

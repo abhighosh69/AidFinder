@@ -1,12 +1,25 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const SignUp = () => {
-
   const [role, setRole] = useState("user"); // Default role: user
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   const handelGoogleLoginBackend = async () => {
     window.location.href = import.meta.env.VITE_BACKEND_GOOGLE_AUTH_URL;
   };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    axios.post("http://localhost:8080/signup",{name,email,password,role})
+    .then((result) => {
+      console.log(result)
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-secondary">
@@ -27,7 +40,7 @@ const SignUp = () => {
         </p>
         <div className="my-6 space-y-4">
           <button
-          onClick={handelGoogleLoginBackend}
+            onClick={handelGoogleLoginBackend}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400"
@@ -47,8 +60,27 @@ const SignUp = () => {
           <p className="px-3 text-gray-400">OR</p>
           <hr className="w-full text-gray-400" />
         </div>
-        <form noValidate="" action="" className="space-y-8">
+        <form onSubmit={handelSubmit} noValidate="" action="" className="space-y-8">
           <div className="space-y-4">
+            
+            {/* Name Input */}
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Abhishek Ghosh"
+                required
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+              />
+            </div>
+
             {/* Email Input */}
             <div className="space-y-2">
               <label htmlFor="email" className="block text-sm">
@@ -58,8 +90,11 @@ const SignUp = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="leroy@jenkins.com"
+                placeholder="xyz@gmail.com"
                 required
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
               />
             </div>
@@ -85,8 +120,11 @@ const SignUp = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="****"
+                placeholder="********"
                 required
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
               />
             </div>

@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      minlength: [8, "Password must be at least 8 characters long"],
+      /* minlength: [8, "Password must be at least 8 characters long"], */
     },
     image: { type: String, default: DEFAULT_USER_IMAGE },
     address: { type: Object, default: { line1: "", line2: "" } },
@@ -32,11 +32,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "0000000000",
       match: [/^\d{10}$/, "Invalid phone number format"],
-    },
-    role: {
-      type: String,
-      enum: ["user", "doctor"], // Allowed roles
-      default: "user", // Default role
     },
   },
   { timestamps: true }

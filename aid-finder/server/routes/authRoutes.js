@@ -1,13 +1,16 @@
 import express from "express";
 import passport from "passport";
-import userModel from "../models/userModel.js";
+import { signup, login } from "../controllers/normalAuthController.js";
+
+
 const router = express.Router();
 
+// Home Route (for testing purposes)
 router.get("/", (req, res) => {
-  res.send("<a href='/auth/google'>Login</a>");
+  res.send("<a href='/auth/google'>Login with Google</a>");
 });
 
-// Google Authentication
+// ------- Google Authentication -------
 router.get(
   "/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
@@ -31,6 +34,7 @@ router.get("/profile", (req, res) => {
   }
 });
 
+// Logout Route
 router.get("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) {
@@ -39,6 +43,11 @@ router.get("/logout", (req, res, next) => {
     res.redirect("/");
   });
 });
+
+
+router.post("/signup", signup);
+router.post("/login", login);
+
 
 
 export default router;

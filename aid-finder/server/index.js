@@ -2,12 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import authLoginRoutes from "./routes/loginRequest.js";
+import authRoutes from "./routes/authRoutes.js";
 import sessionMiddleware from "./middlewares/sessionMiddleware.js";
 import passportMiddleware from "./middlewares/passportMiddleware.js";
 import "./controllers/authController.js";
 import connectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
+import userModel from "./models/userModel.js";
 
 dotenv.config();
 
@@ -27,8 +28,26 @@ app.use(cors());
 // Apply Passport Middleware
 passportMiddleware(app);
 
+
+
+
+
+
+
+
+
+
 // Set up Routes
-app.use(authLoginRoutes);
+app.use(authRoutes);
+
+
+
+
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`The app listening on port http://localhost:${port}`);

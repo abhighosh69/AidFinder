@@ -1,30 +1,59 @@
 import React, { useState } from "react";
+import axios from "axios";
+import{ useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [userType, setUserType] = useState("normal"); // Default to normal user
+  const navigate = useNavigate();
+  const [role, setRole] = useState("user"); // Default role: user;
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   const handleUserTypeChange = (e) => {
-    setUserType(e.target.value);
+    setRole(e.target.value);
+  };
+
+  const handelGoogleLoginBackend = async () => {
+    window.location.href = import.meta.env.VITE_BACKEND_GOOGLE_AUTH_URL;
+  };
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8080/login", { email, password, role })
+      .then((result) => {
+        console.log(result);
+        if (result.data==="Success") {
+          navigate('/home');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-secondary">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
         <h1 className="mb-3 text-3xl font-semibold text-center">Login</h1>
-        <form noValidate="" action="" className="space-y-6">
+        <form
+          onSubmit={handelSubmit}
+          noValidate=""
+          action=""
+          className="space-y-6"
+        >
           {/* User Type Selection */}
           <div className="space-y-1 text-sm">
-            <label htmlFor="userType" className="block text-gray-400">
+            <label htmlFor="role" className="block text-gray-400">
               Select User Type
             </label>
             <div className="flex space-x-8">
               <div className="flex items-center">
                 <input
                   type="radio"
-                  name="userType"
+                  name="role"
                   id="normal"
                   value="normal"
-                  checked={userType === "normal"}
+                  checked={role === "normal"}
                   onChange={handleUserTypeChange}
                   className="hidden peer"
                 />
@@ -38,10 +67,10 @@ const Login = () => {
               <div className="flex items-center">
                 <input
                   type="radio"
-                  name="userType"
+                  name="role"
                   id="doctor"
                   value="doctor"
-                  checked={userType === "doctor"}
+                  checked={role === "doctor"}
                   onChange={handleUserTypeChange}
                   className="hidden peer"
                 />
@@ -55,16 +84,19 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Username */}
+          {/* Email */}
           <div className="space-y-1 text-sm">
-            <label htmlFor="username" className="block text-gray-400">
-              Username
+            <label htmlFor="email" className="block text-gray-400">
+              Email
             </label>
             <input
               type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
+              name="email"
+              id="email"
+              placeholder="Email"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
             />
           </div>
@@ -79,13 +111,16 @@ const Login = () => {
               name="password"
               id="password"
               placeholder="Password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
             />
-            <div className="flex justify-end text-xs text-gray-400">
+            {/* <div className="flex justify-end text-xs text-gray-400">
               <a rel="noopener noreferrer" href="#">
                 Forgot Password?
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Login Button */}
@@ -106,6 +141,7 @@ const Login = () => {
           <button
             aria-label="Login with Google"
             type="button"
+            onClick={handelGoogleLoginBackend}
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400"
           >
             <svg
