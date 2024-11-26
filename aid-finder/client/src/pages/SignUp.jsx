@@ -141,7 +141,7 @@ const SignUp = () => {
                 onChange={(e) => setRole(e.target.value)}
                 className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
               >
-                <option value="user">Normal User</option>
+                <option value="user">User</option>
                 <option value="doctor">Doctor</option>
               </select>
             </div>

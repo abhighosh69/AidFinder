@@ -14,6 +14,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Doctor from "./pages/Doctor";
 import BookAppointments from "./pages/BookAppointments";
 import SignUp from "./pages/SignUp";
+import AdminDoctor from "./pages/AdminDoctor";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/book-appointment/:docId" element={<BookAppointments />} />
         <Route path="/my-profile" element={<MyProfile />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/admin-doctor" element={<AdminDoctor />} />
       </Routes>
 
       <Footer />

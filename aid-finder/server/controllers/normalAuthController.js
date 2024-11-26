@@ -23,11 +23,13 @@ export const signup = async (req, res) => {
       // Create a new user
       createdUser = await userModel.create({ name, email, password });
     } else if (role === "doctor") {
-      createdUser = await doctorModel.create({ name, email, password});
+      createdUser = await doctorModel.create({ name, email, password });
     } else {
       return res.status(400).json({ message: "Invalid role specified" });
     }
-    res.status(201).json({ message: "User created successfully", user:createdUser });
+    res
+      .status(201)
+      .json({ message: "User created successfully", user: createdUser });
   } catch (err) {
     console.error(err);
     res
@@ -38,15 +40,38 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email, password, role } = req.body;
-  userModel.findOne({ email: email }).then((user) => {
-    if (user) {
-      if (user.password === password) {
-        res.status(200).json("Success");
-      } else {
-        res.status(400).json("Incorrect Password");
-      }
-    } else {
-      res.status(404).json("No Record Found");
+
+  try {
+    if (!email || !password || !role) {
+      return res.status(400).json({ message: "All fields are required" });
     }
-  });
+
+    // Validate role
+    if (role !== "user" && role !== "doctor") {
+      return res
+        .status(400)
+        .json({ message: "Invalid role. Role must be 'user' or 'doctor'" });
+    }
+
+    // Determine the model based on the role
+    const model = role === "user" ? userModel : doctorModel;
+
+    // Find the user or doctor by email
+    const user = await model.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "No record found" });
+    }
+
+    // Compare passwords
+    if (user.password !== password) {
+      return res.status(400).json({ message: "Incorrect password" });
+    }
+
+    // Login successful
+    res.status(200).json({ message: "Login successful", user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error logging in", error: err.message });
+  }
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import{ useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,8 +22,14 @@ const Login = () => {
       .post("http://localhost:8080/login", { email, password, role })
       .then((result) => {
         console.log(result);
-        if (result.data==="Success") {
-          navigate('/home');
+        if (result.data.message === "Login successful") {
+          if (role === "user") {
+            navigate("/home");
+          } else if (role === "doctor") {
+            navigate("/admin-doctor");
+          }
+        } else {
+          console.log("Unexpected response:", result.data);
         }
       })
       .catch((err) => {
@@ -51,9 +57,9 @@ const Login = () => {
                 <input
                   type="radio"
                   name="role"
-                  id="normal"
-                  value="normal"
-                  checked={role === "normal"}
+                  id="user"
+                  value="user"
+                  checked={role === "user"}
                   onChange={handleUserTypeChange}
                   className="hidden peer"
                 />
