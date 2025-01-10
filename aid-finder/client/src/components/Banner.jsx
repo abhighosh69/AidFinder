@@ -6,7 +6,7 @@ const Banner = () => {
   const navigate = useNavigate();
 
   const handleToDoneters = () => {
-    navigate("/doneter");
+    navigate("/donner");
   };
   return (
     <div className="flex bg-primary rounded-lg px-6 sm:px-10 md:px-14 lg:px-12 my-60 md:mx-10">

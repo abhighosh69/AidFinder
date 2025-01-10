@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { assets } from "../assets/assetsFrontend/assets";
+//import {userSchema} from ""
 
 const MyProfile = () => {
   const [userData, setUserData] = useState({
@@ -17,6 +19,7 @@ const MyProfile = () => {
 
   const [isEdit, setIsEdit] = useState(false);
 
+  
   return (
     <div className="max-w-lg flex flex-col gap-2 text-sm">
       <img className="w-36 rounded" src={userData.image} alt="user image" />
@@ -66,10 +69,10 @@ const MyProfile = () => {
                 onChange={(e) =>
                   setUserData((prev) => ({
                     ...prev,
-                    address: { ...prev.address, line1: e.target.value },
+                    address: { ...prev.address, line1: e.target.value || "" },
                   }))
                 }
-                value={userData.address.line1}
+                value={userData.address.line1 || ""}
               />
               <br />
               <input
@@ -78,10 +81,10 @@ const MyProfile = () => {
                 onChange={(e) =>
                   setUserData((prev) => ({
                     ...prev,
-                    address: { ...prev.address, line2: e.target.value },
+                    address: { ...prev.address, line2: e.target.value || "" },
                   }))
                 }
-                value={userData.address.line2}
+                value={userData.address.line2 || ""}
               />
             </p>
           ) : (
@@ -100,7 +103,8 @@ const MyProfile = () => {
         <div className="grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-neutral-700">
           <p className="font-medium">Gender:</p>
           {isEdit ? (
-            <select className="max-w-20 bg-gray-100"
+            <select
+              className="max-w-20 bg-gray-100"
               onChange={(e) =>
                 setUserData((prev) => ({ ...prev, gender: e.target.value }))
               }
@@ -108,6 +112,7 @@ const MyProfile = () => {
             >
               <option value="Male">Male</option>
               <option value="Female">Female</option>
+              <option value="Other">Other</option>
             </select>
           ) : (
             <p className="text-gray-800">{userData.gender}</p>
@@ -115,7 +120,7 @@ const MyProfile = () => {
           <p className="font-medium">Birthday: </p>
           {isEdit ? (
             <input
-            className="max-w-28 bg-gray-100"
+              className="max-w-28 bg-gray-100"
               type="date"
               onChange={(e) =>
                 setUserData((prev) => ({ ...prev, dob: e.target.value }))
@@ -128,13 +133,23 @@ const MyProfile = () => {
         </div>
       </div>
 
-      <div className="mt-10">
+      {/* <div className="mt-10">
         {isEdit ? (
-          <button className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all" onClick={() => setIsEdit(false)}>Save information</button>
+          <button
+            className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all"
+            onClick={updateUserDetails}
+          >
+            Save information
+          </button>
         ) : (
-          <button className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all" onClick={() => setIsEdit(true)}>Edit</button>
+          <button
+            className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all"
+            onClick={() => setIsEdit(true)}
+          >
+            Edit
+          </button>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

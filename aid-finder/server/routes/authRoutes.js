@@ -1,3 +1,5 @@
+// ------- This File is for Google Authentication -------
+
 import express from "express";
 import passport from "passport";
 import { signup, login } from "../controllers/normalAuthController.js";

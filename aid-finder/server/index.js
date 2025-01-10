@@ -8,7 +8,8 @@ import passportMiddleware from "./middlewares/passportMiddleware.js";
 import "./controllers/authController.js";
 import connectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
-import userModel from "./models/userModel.js";
+
+import userRoutes from "./routes/userRoutes.js";  // Import routes file
 
 dotenv.config();
 
@@ -28,25 +29,11 @@ app.use(cors());
 // Apply Passport Middleware
 passportMiddleware(app);
 
-
-
-
-
-
-
-
-
-
 // Set up Routes
 app.use(authRoutes);
 
-
-
-
-
-
-
-
+// Register the routes
+app.use(userRoutes);
 
 
 app.listen(port, () => {

@@ -16,7 +16,6 @@ const Footer = () => {
   return (
     <div className="md:mx-10">
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm">
-        
         {/* ------- Left Side ------- */}
         <div>
           <img
@@ -26,10 +25,10 @@ const Footer = () => {
             onClick={() => handleToRedirect("/home")}
           />
           <p className="w-full md:w-2/3 text-gray-600 leading-6 text-base">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+            AidFinder connects users to nearby hospitals, medical professionals,
+            and blood donors. With easy access to appointment booking and health
+            resources, we aim to simplify healthcare experiences, ensuring rapid
+            access to essential health services for everyone.
           </p>
         </div>
 
@@ -60,7 +59,7 @@ const Footer = () => {
       <div>
         <hr />
         <p className="py-5 text-center text-sm">
-          Copyright © 2024 Aid Finder - All Right Reserved.
+          Copyright © 2025 Aid Finder - All Right Reserved.
         </p>
       </div>
     </div>
