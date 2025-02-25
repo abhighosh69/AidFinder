@@ -38,6 +38,7 @@ const Navbar = () => {
     { path: "/donner", label: "BLOOD CENTER" },
     { path: "/about", label: "ABOUT" },
     { path: "/contact", label: "CONTACT US" },
+    {path: "/chatbot", label: "CHATBOT"},
   ];
 
   return (

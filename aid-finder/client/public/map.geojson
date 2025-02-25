@@ -3,345 +3,703 @@
   "features": [
     {
       "type": "Feature",
-      "properties": { "name": "Lady Dufferin" },
+      "properties": {
+        "name": "Lady Dufferin"
+      },
       "geometry": {
-        "coordinates": [88.36576074276621, 22.569144164423633],
+        "coordinates": [
+          88.36576074276621,
+          22.569144164423633
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "ESI Office" },
+      "properties": {
+        "name": "ESI Office"
+      },
       "geometry": {
-        "coordinates": [88.37342617107754, 22.57279636599519],
+        "coordinates": [
+          88.37342617107754,
+          22.57279636599519
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Jitendra Narayan Ray Hospital" },
+      "properties": {
+        "name": "Jitendra Narayan Ray Hospital"
+      },
       "geometry": {
-        "coordinates": [88.3762721710529, 22.583222021682616],
+        "coordinates": [
+          88.3762721710529,
+          22.583222021682616
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Eco Hospital" },
+      "properties": {
+        "name": "Eco Hospital"
+      },
       "geometry": {
-        "coordinates": [88.4926093151023, 22.723926033680257],
+        "coordinates": [
+          88.4926093151023,
+          22.723926033680257
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Barasat District Hospital" },
+      "properties": {
+        "name": "Barasat District Hospital"
+      },
       "geometry": {
-        "coordinates": [88.4924977794754, 22.721719856890076],
+        "coordinates": [
+          88.4924977794754,
+          22.721719856890076
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Megacity Nursing Home" },
+      "properties": {
+        "name": "Megacity Nursing Home"
+      },
       "geometry": {
-        "coordinates": [88.48868469387287, 22.72029816482025],
+        "coordinates": [
+          88.48868469387287,
+          22.72029816482025
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "New Sevayan Nursing Home" },
+      "properties": {
+        "name": "New Sevayan Nursing Home"
+      },
       "geometry": {
-        "coordinates": [88.48887146156926, 22.717635705402515],
+        "coordinates": [
+          88.48887146156926,
+          22.717635705402515
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Care and Cure Hospital" },
+      "properties": {
+        "name": "Care and Cure Hospital"
+      },
       "geometry": {
-        "coordinates": [88.47379496759652, 22.723908779758247],
+        "coordinates": [
+          88.47379496759652,
+          22.723908779758247
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Rog Mukti" },
+      "properties": {
+        "name": "Rog Mukti"
+      },
       "geometry": {
-        "coordinates": [88.46621085994019, 22.714560741558202],
+        "coordinates": [
+          88.46621085994019,
+          22.714560741558202
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Nirama Nursing Home" },
+      "properties": {
+        "name": "Nirama Nursing Home"
+      },
       "geometry": {
-        "coordinates": [88.47600858873989, 22.711646586522463],
+        "coordinates": [
+          88.47600858873989,
+          22.711646586522463
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Narayana Multi Speciality Hospital" },
+      "properties": {
+        "name": "Narayana Multi Speciality Hospital"
+      },
       "geometry": {
-        "coordinates": [88.47226515399888, 22.705301503757383],
+        "coordinates": [
+          88.47226515399888,
+          22.705301503757383
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "North Dum Dum Municipality Hospital" },
+      "properties": {
+        "name": "North Dum Dum Municipality Hospital"
+      },
       "geometry": {
-        "coordinates": [88.43543603834502, 22.661009851755864],
+        "coordinates": [
+          88.43543603834502,
+          22.661009851755864
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Renuka Eye " },
+      "properties": {
+        "name": "Renuka Eye "
+      },
       "geometry": {
-        "coordinates": [88.47474611468039, 22.708921021429802],
+        "coordinates": [
+          88.47474611468039,
+          22.708921021429802
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "B R Singh" },
+      "properties": {
+        "name": "B R Singh"
+      },
       "geometry": {
-        "coordinates": [88.37073381773223, 22.56564382439572],
+        "coordinates": [
+          88.37073381773223,
+          22.56564382439572
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Eye Foundation and Research Centre" },
+      "properties": {
+        "name": "Eye Foundation and Research Centre"
+      },
       "geometry": {
-        "coordinates": [88.38801533483775, 22.58076286833345],
+        "coordinates": [
+          88.38801533483775,
+          22.58076286833345
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Poorva Eye Care" },
+      "properties": {
+        "name": "Poorva Eye Care"
+      },
       "geometry": {
-        "coordinates": [88.39177594650482, 22.56829362070492],
+        "coordinates": [
+          88.39177594650482,
+          22.56829362070492
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Divine Nursing Home" },
+      "properties": {
+        "name": "Divine Nursing Home"
+      },
       "geometry": {
-        "coordinates": [88.39275842792392, 22.566320500323258],
+        "coordinates": [
+          88.39275842792392,
+          22.566320500323258
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "ID & BG Hospital" },
+      "properties": {
+        "name": "ID & BG Hospital"
+      },
       "geometry": {
-        "coordinates": [88.39835662897707, 22.564426320046422],
+        "coordinates": [
+          88.39835662897707,
+          22.564426320046422
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Vivekananda Eye Care Centre" },
+      "properties": {
+        "name": "Vivekananda Eye Care Centre"
+      },
       "geometry": {
-        "coordinates": [88.3951089451109, 22.56292674108947],
+        "coordinates": [
+          88.3951089451109,
+          22.56292674108947
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Nil Ratan Sircar Medical College and Hospital" },
+      "properties": {
+        "name": "Nil Ratan Sircar Medical College and Hospital"
+      },
       "geometry": {
-        "coordinates": [88.37006722188039, 22.563676573906207],
+        "coordinates": [
+          88.37006722188039,
+          22.563676573906207
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Micro Phaco Sugery Centre" },
+      "properties": {
+        "name": "Micro Phaco Sugery Centre"
+      },
       "geometry": {
-        "coordinates": [88.37237478645432, 22.55732301114351],
+        "coordinates": [
+          88.37237478645432,
+          22.55732301114351
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Mitra Snagh Hospital" },
+      "properties": {
+        "name": "Mitra Snagh Hospital"
+      },
       "geometry": {
-        "coordinates": [88.36070893416223, 22.583739732021243],
+        "coordinates": [
+          88.36070893416223,
+          22.583739732021243
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Asharam Bhiwaniwala Hospital" },
+      "properties": {
+        "name": "Asharam Bhiwaniwala Hospital"
+      },
       "geometry": {
-        "coordinates": [88.3538457792767, 22.586620103250922],
+        "coordinates": [
+          88.3538457792767,
+          22.586620103250922
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "R G Kar Medical College & Hospital" },
+      "properties": {
+        "name": "R G Kar Medical College & Hospital"
+      },
       "geometry": {
-        "coordinates": [88.37813062188468, 22.604317910110964],
+        "coordinates": [
+          88.37813062188468,
+          22.604317910110964
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "National Institute of Homeopathy" },
+      "properties": {
+        "name": "National Institute of Homeopathy"
+      },
       "geometry": {
-        "coordinates": [88.42001111325902, 22.57616873281367],
+        "coordinates": [
+          88.42001111325902,
+          22.57616873281367
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "SSKM College and Hospital" },
+      "properties": {
+        "name": "SSKM College and Hospital"
+      },
       "geometry": {
-        "coordinates": [88.34223183617485, 22.53987943374341],
+        "coordinates": [
+          88.34223183617485,
+          22.53987943374341
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Culcutta Pavlov Hospital" },
+      "properties": {
+        "name": "Culcutta Pavlov Hospital"
+      },
       "geometry": {
-        "coordinates": [88.37549697331173, 22.54758659680148],
+        "coordinates": [
+          88.37549697331173,
+          22.54758659680148
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Fortis Hospitals" },
+      "properties": {
+        "name": "Fortis Hospitals"
+      },
       "geometry": {
-        "coordinates": [88.40112238754347, 22.520168360623472],
+        "coordinates": [
+          88.40112238754347,
+          22.520168360623472
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Dr. Agarwals Eye Hospital" },
+      "properties": {
+        "name": "Dr. Agarwals Eye Hospital"
+      },
       "geometry": {
-        "coordinates": [88.39235095738957, 22.514744854808],
+        "coordinates": [
+          88.39235095738957,
+          22.514744854808
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Global Healthcare System" },
+      "properties": {
+        "name": "Global Healthcare System"
+      },
       "geometry": {
-        "coordinates": [88.4915632491261, 22.58566036219942],
+        "coordinates": [
+          88.4915632491261,
+          22.58566036219942
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Tata Medical Center" },
+      "properties": {
+        "name": "Tata Medical Center"
+      },
       "geometry": {
-        "coordinates": [88.48041716001643, 22.577257110841572],
+        "coordinates": [
+          88.48041716001643,
+          22.577257110841572
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Orthopaedic Center" },
+      "properties": {
+        "name": "Orthopaedic Center"
+      },
       "geometry": {
-        "coordinates": [88.3909347034035, 22.58275581543066],
+        "coordinates": [
+          88.3909347034035,
+          22.58275581543066
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Matri Sadan-O-Swasthya Kendra" },
+      "properties": {
+        "name": "Matri Sadan-O-Swasthya Kendra"
+      },
       "geometry": {
-        "coordinates": [88.4084852236499, 22.644294676438065],
+        "coordinates": [
+          88.4084852236499,
+          22.644294676438065
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Bengal Neuro Institute Hospital" },
+      "properties": {
+        "name": "Bengal Neuro Institute Hospital"
+      },
       "geometry": {
-        "coordinates": [88.44520521263087, 22.67399398903619],
+        "coordinates": [
+          88.44520521263087,
+          22.67399398903619
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Cancer Hospital" },
+      "properties": {
+        "name": "Cancer Hospital"
+      },
       "geometry": {
-        "coordinates": [88.38842102461035, 22.526728376262753],
+        "coordinates": [
+          88.38842102461035,
+          22.526728376262753
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Swastik Seva Sadan" },
+      "properties": {
+        "name": "Swastik Seva Sadan"
+      },
       "geometry": {
-        "coordinates": [88.37437871263904, 22.534729076853836],
+        "coordinates": [
+          88.37437871263904,
+          22.534729076853836
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Bulle Vue Clinic" },
+      "properties": {
+        "name": "Bulle Vue Clinic"
+      },
       "geometry": {
-        "coordinates": [88.3550406900107, 22.542489319335388],
+        "coordinates": [
+          88.3550406900107,
+          22.542489319335388
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Priyamvada Birla Aravind Eye Hospital" },
+      "properties": {
+        "name": "Priyamvada Birla Aravind Eye Hospital"
+      },
       "geometry": {
-        "coordinates": [88.35540994927987, 22.542424025269597],
+        "coordinates": [
+          88.35540994927987,
+          22.542424025269597
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "MP Birla Eye Clinic" },
+      "properties": {
+        "name": "MP Birla Eye Clinic"
+      },
       "geometry": {
-        "coordinates": [88.35613081000571, 22.54287122938426],
+        "coordinates": [
+          88.35613081000571,
+          22.54287122938426
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Bidhannagar Municipal Hospital" },
+      "properties": {
+        "name": "Bidhannagar Municipal Hospital"
+      },
       "geometry": {
-        "coordinates": [88.42259398638782, 22.581425038400226],
+        "coordinates": [
+          88.42259398638782,
+          22.581425038400226
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Udichi ENT and Head Neck Center" },
+      "properties": {
+        "name": "Udichi ENT and Head Neck Center"
+      },
       "geometry": {
-        "coordinates": [88.40757566029265, 22.60131165085349],
+        "coordinates": [
+          88.40757566029265,
+          22.60131165085349
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Anjali Eye Center" },
+      "properties": {
+        "name": "Anjali Eye Center"
+      },
       "geometry": {
-        "coordinates": [88.34185400290306, 22.59190546430844],
+        "coordinates": [
+          88.34185400290306,
+          22.59190546430844
+        ],
         "type": "Point"
       }
     },
     {
       "type": "Feature",
-      "properties": { "name": "Dr. M N Chatterjee Memorial Eye Hospital" },
+      "properties": {
+        "name": "Dr. M N Chatterjee Memorial Eye Hospital"
+      },
       "geometry": {
-        "coordinates": [88.37413016014523, 22.57815067562008],
+        "coordinates": [
+          88.37413016014523,
+          22.57815067562008
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dishari"
+      },
+      "geometry": {
+        "coordinates": [
+          88.35038482663475,
+          22.869398088472437
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Meditek Center"
+      },
+      "geometry": {
+        "coordinates": [
+          88.36324214121777,
+          22.864688544889844
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "New Panacea Hospital"
+      },
+      "geometry": {
+        "coordinates": [
+          88.40259124511897,
+          22.765953856051738
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nagarukhra Primary Health Center"
+      },
+      "geometry": {
+        "coordinates": [
+          88.64389656358696,
+          22.921833905347455
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gaighata Hospital"
+      },
+      "geometry": {
+        "coordinates": [
+          88.73509553714428,
+          22.934091295534557
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chandpara Rural Hospital"
+      },
+      "geometry": {
+        "coordinates": [
+          88.7767582104641,
+          22.940784580334153
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gandhi Memorial Hospital"
+      },
+      "geometry": {
+        "coordinates": [
+          88.47278093845733,
+          22.966470015625404
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Apollo Nursing Home"
+      },
+      "geometry": {
+        "coordinates": [
+          88.46534840645853,
+          22.967668551221607
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shushrut Hospital"
+      },
+      "geometry": {
+        "coordinates": [
+          88.46552406594071,
+          22.967861420733612
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Majumder Millennium Nursing Home"
+      },
+      "geometry": {
+        "coordinates": [
+          88.46559066137917,
+          22.967976742902295
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ceragem Physiotherapy Center"
+      },
+      "geometry": {
+        "coordinates": [
+          88.46441532610726,
+          22.968182077284098
+        ],
         "type": "Point"
       }
     }
