@@ -92,12 +92,13 @@ export const doctors = [
     speciality: "General physician",
     degree: "MBBS",
     experience: "4 Years",
+    registration_no: "WBMC-2021-04567",
     about:
-    "Dr. Aarav Singh is a dedicated general physician with over four years of experience in providing comprehensive medical care. He is passionate about promoting preventive health measures and emphasizes the importance of early diagnosis in achieving optimal health outcomes.",
+      "Dr. Aarav Singh is a dedicated general physician with over four years of experience in providing comprehensive medical care. He is passionate about promoting preventive health measures and emphasizes the importance of early diagnosis in achieving optimal health outcomes.",
     fees: 500,
     address: {
-      line1: "123 Lajpat Nagar",
-      line2: "New Delhi, Delhi 110024",
+      line1: "12A, Park Street",
+      line2: "Kolkata, West Bengal 700016",
     },
   },
   {
@@ -107,12 +108,13 @@ export const doctors = [
     speciality: "Gynecologist",
     degree: "MBBS",
     experience: "3 Years",
+    registration_no: "WBMC-2022-03890",
     about:
       "Dr. Desai specializes in women's health, focusing on preventive care, early diagnosis, and effective treatment strategies.",
     fees: 600,
     address: {
-      line1: "456 Andheri West",
-      line2: "Mumbai, Maharashtra 400053",
+      line1: "56, Sarat Bose Road",
+      line2: "Kolkata, West Bengal 700025",
     },
   },
   {
@@ -122,12 +124,13 @@ export const doctors = [
     speciality: "Dermatologist",
     degree: "MBBS",
     experience: "1 Year",
+    registration_no: "WBMC-2023-05432",
     about:
       "Dr. Kumar is committed to delivering comprehensive skin care, focusing on preventive measures and early treatment of dermatological conditions. He believes in a patient-centered approach, taking the time to understand each patient's unique concerns and tailoring treatments to their individual needs.",
     fees: 300,
     address: {
-      line1: "789 Koramangala 4th Block",
-      line2: "Bengaluru, Karnataka 560034",
+      line1: "34, Salt Lake Sector V",
+      line2: "Kolkata, West Bengal 700091",
     },
   },
   {
@@ -137,12 +140,13 @@ export const doctors = [
     speciality: "Pediatrician",
     degree: "MBBS",
     experience: "2 Years",
+    registration_no: "WBMC-2022-04231",
     about:
       "Dr. Kumar is focused on delivering quality healthcare to children, ensuring preventive and effective treatment.",
     fees: 400,
     address: {
-      line1: "23 Anna Nagar West",
-      line2: "Chennai, Tamil Nadu 600040",
+      line1: "78, Hill Cart Road",
+      line2: "Siliguri, West Bengal 734001",
     },
   },
   {
@@ -152,12 +156,13 @@ export const doctors = [
     speciality: "Neurologist",
     degree: "MBBS",
     experience: "4 Years",
+    registration_no: "WBMC-2021-04678",
     about:
       "Dr. Gupta is committed to neurological care, with a focus on early diagnosis and treatment strategies.",
     fees: 500,
     address: {
-      line1: "10 Park Street",
-      line2: "Kolkata, West Bengal 700016",
+      line1: "15, Burdwan Road",
+      line2: "Darjeeling, West Bengal 734101",
     },
   },
   {
@@ -167,12 +172,13 @@ export const doctors = [
     speciality: "Neurologist",
     degree: "MBBS",
     experience: "4 Years",
+    registration_no: "WBMC-2021-04680",
     about:
       "Dr. Mehta provides comprehensive neurological care, focusing on early intervention and effective treatment.",
     fees: 500,
     address: {
-      line1: "75 MG Road",
-      line2: "Pune, Maharashtra 411001",
+      line1: "98, Kalyani Expressway",
+      line2: "Kalyani, West Bengal 741235",
     },
   },
   {
@@ -182,12 +188,13 @@ export const doctors = [
     speciality: "General physician",
     degree: "MBBS",
     experience: "4 Years",
+    registration_no: "WBMC-2021-04591",
     about:
       "Dr. Raj has a commitment to preventive healthcare and offers a range of medical services for early diagnosis.",
     fees: 500,
     address: {
-      line1: "12 Janpath",
-      line2: "New Delhi, Delhi 110001",
+      line1: "120, Grand Trunk Road",
+      line2: "Howrah, West Bengal 711101",
     },
   },
   {
@@ -197,12 +204,13 @@ export const doctors = [
     speciality: "Gynecologist",
     degree: "MBBS",
     experience: "3 Years",
+    registration_no: "WBMC-2022-03878",
     about:
       "Dr. Patil provides dedicated gynecological care, focusing on preventive health and effective treatment strategies. He is passionate about educating women on health issues and reproductive rights, aiming to empower his patients through knowledge.",
     fees: 600,
     address: {
-      line1: "304 Bandra East",
-      line2: "Mumbai, Maharashtra 400051",
+      line1: "234, Rashbehari Avenue",
+      line2: "Kolkata, West Bengal 700029",
     },
   },
   {
@@ -212,12 +220,13 @@ export const doctors = [
     speciality: "Dermatologist",
     degree: "MBBS",
     experience: "1 Year",
+    registration_no: "WBMC-2023-05412",
     about:
       "Dr. Patel is focused on skin care and preventive treatment strategies for early diagnosis.",
     fees: 300,
     address: {
-      line1: "234 HSR Layout",
-      line2: "Bengaluru, Karnataka 560102",
+      line1: "67, Baghajatin Main Road",
+      line2: "Kolkata, West Bengal 700086",
     },
   },
   {
@@ -227,12 +236,13 @@ export const doctors = [
     speciality: "Pediatrician",
     degree: "MBBS",
     experience: "2 Years",
+    registration_no: "WBMC-2022-04245",
     about:
       "Dr. Joshi is dedicated to providing quality healthcare for children, focusing on preventive care.",
     fees: 400,
     address: {
-      line1: "56 T Nagar",
-      line2: "Chennai, Tamil Nadu 600017",
+      line1: "32, Deshbandhu Road",
+      line2: "Midnapore, West Bengal 721101",
     },
   },
   {
@@ -242,12 +252,13 @@ export const doctors = [
     speciality: "Neurologist",
     degree: "MBBS",
     experience: "4 Years",
+    registration_no: "WBMC-2021-04700",
     about:
       "Dr. Khan specializes in neurological care with an emphasis on early diagnosis and patient well-being.",
     fees: 500,
     address: {
-      line1: "24 Banjara Hills",
-      line2: "Hyderabad, Telangana 500034",
+      line1: "88, GT Road",
+      line2: "Asansol, West Bengal 713301",
     },
   },
   {
@@ -257,12 +268,13 @@ export const doctors = [
     speciality: "Gastroenterologist",
     degree: "MBBS",
     experience: "4 Years",
+    registration_no: "WBMC-2021-04650",
     about:
       "Dr. Rao is a specialist in gastroenterology, providing comprehensive care and preventive treatment.",
     fees: 500,
     address: {
-      line1: "98 Satellite Road",
-      line2: "Ahmedabad, Gujarat 380015",
+      line1: "54, Station Road",
+      line2: "Durgapur, West Bengal 713204",
     },
   },
   {
@@ -272,12 +284,13 @@ export const doctors = [
     speciality: "General physician",
     degree: "MBBS",
     experience: "4 Years",
+    registration_no: "WBMC-2021-04585",
     about:
       "Dr. Iyer is dedicated to general health, focusing on preventive and early treatment methods.",
     fees: 500,
     address: {
-      line1: "123 Connaught Place",
-      line2: "New Delhi, Delhi 110001",
+      line1: "9, College Street",
+      line2: "Kolkata, West Bengal 700073",
     },
   },
   {
@@ -287,12 +300,13 @@ export const doctors = [
     speciality: "Gastroenterologist",
     degree: "MBBS",
     experience: "3 Years",
+    registration_no: "WBMC-2022-03987",
     about:
       "Dr. Menon specializes in gastroenterology, focusing on preventive care and effective treatment strategies. He emphasizes the importance of digestive health and advocates for lifestyle modifications to enhance patient outcomes.",
     fees: 600,
     address: {
-      line1: "67 Marine Drive",
-      line2: "Cochin, Kerala 682016",
+      line1: "21, Sevoke Road",
+      line2: "Siliguri, West Bengal 734005",
     },
   },
   {
@@ -302,12 +316,13 @@ export const doctors = [
     speciality: "Dermatologist",
     degree: "MBBS",
     experience: "1 Year",
+    registration_no: "WBMC-2023-05445",
     about:
       "Dr. Naik provides dermatological care with a focus on preventive and effective treatment.",
     fees: 300,
     address: {
-      line1: "456 Indiranagar",
-      line2: "Bengaluru, Karnataka 560038",
+      line1: "45, Raghunathganj Road",
+      line2: "Murshidabad, West Bengal 742225",
     },
   },
 ];

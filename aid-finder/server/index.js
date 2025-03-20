@@ -8,8 +8,9 @@ import passportMiddleware from "./middlewares/passportMiddleware.js";
 import "./controllers/authController.js";
 import connectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
+import adminRouter from "./routes/adminRoute.js";
 
-import userRoutes from "./routes/userRoutes.js";  // Import routes file
+
 
 dotenv.config();
 
@@ -23,17 +24,19 @@ connectCloudinary();
 // Apply Session Middleware
 app.use(sessionMiddleware);
 
+// Apply Passport Middleware
+passportMiddleware(app);
+
 app.use(express.json());
 app.use(cors());
 
-// Apply Passport Middleware
-passportMiddleware(app);
+// api endpoints
+app.use('/api/admin',adminRouter) //localhost:8080/api/admin/add-doctor
 
 // Set up Routes
 app.use(authRoutes);
 
-// Register the routes
-app.use(userRoutes);
+
 
 
 app.listen(port, () => {

@@ -17,7 +17,12 @@ const doctorSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      //minlength: [8, "Password must be at least 8 characters long"],
+      minlength: [8, "Password must be at least 8 characters long"],
+    },
+    registration_no: {
+      type: String,
+      required: [true, "Registration number is required"],
+      unique: true,
     },
     image: { type: String },
     speciality: { type: String },
@@ -25,9 +30,9 @@ const doctorSchema = new mongoose.Schema(
     experience: { type: String },
     about: {
       type: String,
-      maxlength: [100, "About field cannot exceed 100 characters"],
+      maxlength: [1000, "About field cannot exceed 1000 characters"],
     },
-    available: { type: Boolean },
+    available: { type: Boolean, default: true },
     fees: {
       type: Number,
       min: [0, "Fees must be at least 0"],
