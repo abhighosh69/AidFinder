@@ -88,6 +88,7 @@ export const doctors = [
   {
     _id: "doc1",
     name: "Dr. Aarav Singh",
+    email: "aarav@aidfinder.com",
     image: doc1,
     speciality: "General physician",
     degree: "MBBS",
@@ -104,6 +105,7 @@ export const doctors = [
   {
     _id: "doc2",
     name: "Dr. Meera Desai",
+    email: "meera@aidfinder.com",
     image: doc2,
     speciality: "Gynecologist",
     degree: "MBBS",
@@ -120,6 +122,7 @@ export const doctors = [
   {
     _id: "doc3",
     name: "Dr. Rajesh Kumar",
+    email: "rajesh@aidfinder.com",
     image: doc3,
     speciality: "Dermatologist",
     degree: "MBBS",
@@ -136,6 +139,7 @@ export const doctors = [
   {
     _id: "doc4",
     name: "Dr. Rohan Kumar",
+    email: "rohan@aidfinder.com",
     image: doc4,
     speciality: "Pediatrician",
     degree: "MBBS",
@@ -152,6 +156,7 @@ export const doctors = [
   {
     _id: "doc5",
     name: "Dr. Kavya Gupta",
+    email: "kavya@aidfinder.com",
     image: doc5,
     speciality: "Neurologist",
     degree: "MBBS",
@@ -168,6 +173,7 @@ export const doctors = [
   {
     _id: "doc6",
     name: "Dr. Aditya Mehta",
+    email: "aditya@aidfinder.com",
     image: doc6,
     speciality: "Neurologist",
     degree: "MBBS",
@@ -184,6 +190,7 @@ export const doctors = [
   {
     _id: "doc7",
     name: "Dr. Ishaan Raj",
+    email: "ishaan@aidfinder.com",
     image: doc7,
     speciality: "General physician",
     degree: "MBBS",
@@ -200,6 +207,7 @@ export const doctors = [
   {
     _id: "doc8",
     name: "Dr. Sameer Patil",
+    email: "sameer@aidfinder.com",
     image: doc8,
     speciality: "Gynecologist",
     degree: "MBBS",
@@ -216,6 +224,7 @@ export const doctors = [
   {
     _id: "doc9",
     name: "Dr. Aanya Patel",
+    email: "aanya@aidfinder.com",
     image: doc9,
     speciality: "Dermatologist",
     degree: "MBBS",
@@ -232,6 +241,7 @@ export const doctors = [
   {
     _id: "doc10",
     name: "Dr. Aniket Joshi",
+    email: "aniket@aidfinder.com",
     image: doc10,
     speciality: "Pediatrician",
     degree: "MBBS",
@@ -248,6 +258,7 @@ export const doctors = [
   {
     _id: "doc11",
     name: "Dr. Zara Khan",
+    email: "zara@aidfinder.com",
     image: doc11,
     speciality: "Neurologist",
     degree: "MBBS",
@@ -264,6 +275,7 @@ export const doctors = [
   {
     _id: "doc12",
     name: "Dr. Arjun Rao",
+    email: "arjun@aidfinder.com",
     image: doc12,
     speciality: "Gastroenterologist",
     degree: "MBBS",
@@ -280,6 +292,7 @@ export const doctors = [
   {
     _id: "doc13",
     name: "Dr. Tanvi Iyer",
+    email: "tanvi@aidfinder.com",
     image: doc13,
     speciality: "General physician",
     degree: "MBBS",
@@ -296,6 +309,7 @@ export const doctors = [
   {
     _id: "doc14",
     name: "Dr. Rakesh Menon",
+    email: "rakesh@aidfinder.com",
     image: doc14,
     speciality: "Gastroenterologist",
     degree: "MBBS",
@@ -312,6 +326,7 @@ export const doctors = [
   {
     _id: "doc15",
     name: "Dr. Ananya Naik",
+    email: "ananya@aidfinder.com",
     image: doc15,
     speciality: "Dermatologist",
     degree: "MBBS",
@@ -324,6 +339,8 @@ export const doctors = [
       line1: "45, Raghunathganj Road",
       line2: "Murshidabad, West Bengal 742225",
     },
-  },
+  }
+  
 ];
+
 
