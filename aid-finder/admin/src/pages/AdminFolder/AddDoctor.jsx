@@ -47,25 +47,35 @@ const AddDoctor = () => {
       // console.log formData
       formData.forEach((value, key) => {
         console.log(`${key}: ${value}`);
-        
-      })
+      });
 
-      const {data} = await axios.post(backendUrl+ 'api/admin/add-doctor',formData, {headers:{aToken}})
+      const { data } = await axios.post(
+        backendUrl + "api/admin/add-doctor",
+        formData,
+        { headers: { aToken } }
+      );
 
       if (data.success) {
         toast.success(data.message);
-      }else{
+        setDocImg(false);
+        setDocName("");
+        setDocEmail("");
+        setDocPassword("");
+        setDocExperience("1 Year");
+        setDocRegistration("");
+        setDocFees("");
+        setDocAbout("");
+        setDocSpeciality("General physician");
+        setDocDegree("");
+        setDocAddress1("");
+        setDocAddress2("");
+      } else {
         toast.error(data.message);
       }
-
-
-
-
     } catch (error) {
       console.error("Error:", error.response ? error.response.data : error);
       toast.error(error.response?.data?.message || "Something went wrong");
-  }
-  
+    }
   };
 
   return (

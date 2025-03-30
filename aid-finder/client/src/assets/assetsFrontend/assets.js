@@ -198,7 +198,7 @@ export const doctors = [
     registration_no: "WBMC-2021-04591",
     about:
       "Dr. Raj has a commitment to preventive healthcare and offers a range of medical services for early diagnosis.",
-    fees: 500,
+    fees: 700,
     address: {
       line1: "120, Grand Trunk Road",
       line2: "Howrah, West Bengal 711101",
