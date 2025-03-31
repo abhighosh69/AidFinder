@@ -16,10 +16,13 @@ import BookAppointments from "./pages/BookAppointments";
 import SignUp from "./pages/SignUp";
 import AdminDoctor from "./pages/AdminDoctor";
 import Chatbot from "./pages/Chatbot";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
     <div className="mx-4 sm:mx-[10%]">
+      <ToastContainer/>
       <Navbar />
 
       <Routes>
