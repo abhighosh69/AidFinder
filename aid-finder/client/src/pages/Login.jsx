@@ -1,95 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const { backendUrl, token, setToken } = useContext(AppContext);
+
   const navigate = useNavigate();
-  const [role, setRole] = useState("user"); // Default role: user;
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
-  const handleUserTypeChange = (e) => {
-    setRole(e.target.value);
-  };
 
   const handelGoogleLoginBackend = async () => {
     window.location.href = import.meta.env.VITE_BACKEND_GOOGLE_AUTH_URL;
   };
 
-  const handelSubmit = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8080/login", { email, password, role })
-      .then((result) => {
-        console.log(result);
-        if (result.data.message === "Login successful") {
-          if (role === "user") {
-            navigate("/home");
-          } else if (role === "doctor") {
-            navigate("/admin-doctor");
-          }
-        } else {
-          console.log("Unexpected response:", result.data);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
+    try {
+      const { data } = await axios.post(backendUrl + "api/user/login", {
+        email,
+        password,
       });
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        setToken(data.token);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+    
+  },[token]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-secondary">
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
         <h1 className="mb-3 text-3xl font-semibold text-center">Login</h1>
-        <form
-          onSubmit={handelSubmit}
-          noValidate=""
-          action=""
-          className="space-y-6"
-        >
-          {/* User Type Selection */}
-          <div className="space-y-1 text-sm">
-            <label htmlFor="role" className="block text-gray-400">
-              Select User Type
-            </label>
-            <div className="flex space-x-8">
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  name="role"
-                  id="user"
-                  value="user"
-                  checked={role === "user"}
-                  onChange={handleUserTypeChange}
-                  className="hidden peer"
-                />
-                <label
-                  htmlFor="normal"
-                  className="peer-checked:bg-gradient-custom-color peer-checked:text-gray-900 cursor-pointer text-gray-400 font-semibold py-2 px-4 rounded-full border-2 border-gray-700 transition duration-300 ease-in-out hover:bg-gradient-custom-color hover:text-gray-900"
-                >
-                  Normal User
-                </label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  name="role"
-                  id="doctor"
-                  value="doctor"
-                  checked={role === "doctor"}
-                  onChange={handleUserTypeChange}
-                  className="hidden peer"
-                />
-                <label
-                  htmlFor="doctor"
-                  className="peer-checked:bg-gradient-custom-color peer-checked:text-gray-900 cursor-pointer text-gray-400 font-semibold py-2 px-4 rounded-full border-2 border-gray-700 transition duration-300 ease-in-out hover:bg-gradient-custom-color hover:text-gray-900"
-                >
-                  Doctor
-                </label>
-              </div>
-            </div>
-          </div>
-
+        <form onSubmit={onSubmitHandler} className="space-y-6">
           {/* Email */}
           <div className="space-y-1 text-sm">
             <label htmlFor="email" className="block text-gray-400">
@@ -130,7 +85,7 @@ const Login = () => {
           </div>
 
           {/* Login Button */}
-          <button className="w-full px-8 py-3 font-semibold rounded-md bg-gradient-custom-color text-gray-900">
+          <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-gradient-custom-color text-gray-900">
             Sign in
           </button>
         </form>

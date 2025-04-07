@@ -1,13 +1,14 @@
-import React from "react";
+import React,{ useState, useContext} from "react";
 import { assets } from "../assets/assetsFrontend/assets";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { AppContext } from "../context/AppContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   const [showButton, setShowButton] = useState(false);
-  const [token, setToken] = useState(true);
+  const {token, setToken} = useContext(AppContext);
+
 
   const handleCreateAccount = () => {
     navigate("/sign-up");
@@ -29,8 +30,10 @@ const Navbar = () => {
     navigate("/my-appointment");
   };
 
-  const handleSetToken = () => {
+  const handleLogout = () => {
     setToken(false);
+    localStorage.removeItem('token');
+
   };
 
   const navMenu = [
@@ -87,7 +90,7 @@ const Navbar = () => {
                 </p>
                 <p
                   className="hover:text-black cursor-pointer"
-                  onClick={handleSetToken}
+                  onClick={handleLogout}
                 >
                   Logout
                 </p>

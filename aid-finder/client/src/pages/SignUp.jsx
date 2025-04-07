@@ -1,25 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
-  const [role, setRole] = useState("user"); // Default role: user
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate();
+
+  const { backendUrl, token, setToken } = useContext(AppContext);
 
   const handelGoogleLoginBackend = async () => {
     window.location.href = import.meta.env.VITE_BACKEND_GOOGLE_AUTH_URL;
   };
 
-  const handelSubmit = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8080/signup",{name,email,password,role})
-    .then((result) => {
-      console.log(result)
-    }).catch((err) => {
-      console.log(err)
-    })
-  }
+    try {
+      const { data } = await axios.post(backendUrl + "api/user/register", {
+        name,
+        password,
+        email,
+      });
+      if (data.success) {
+        localStorage.setItem("token", data.token);
+        setToken(data.token);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, [token]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-secondary">
@@ -60,9 +80,13 @@ const SignUp = () => {
           <p className="px-3 text-gray-400">OR</p>
           <hr className="w-full text-gray-400" />
         </div>
-        <form onSubmit={handelSubmit} noValidate="" action="" className="space-y-8">
+        <form
+          onSubmit={onSubmitHandler}
+          noValidate=""
+          action=""
+          className="space-y-8"
+        >
           <div className="space-y-4">
-            
             {/* Name Input */}
             <div className="space-y-2">
               <label htmlFor="name" className="block text-sm">
@@ -128,55 +152,6 @@ const SignUp = () => {
                 className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
               />
             </div>
-
-            {/* Role Selection */}
-            <div className="space-y-2">
-              <label htmlFor="role" className="block text-sm">
-                I am a
-              </label>
-              <select
-                id="role"
-                name="role"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
-              >
-                <option value="user">User</option>
-                <option value="doctor">Doctor</option>
-              </select>
-            </div>
-
-            {/* Additional fields for Doctor */}
-            {role === "doctor" && (
-              <>
-                <div className="space-y-2">
-                  <label htmlFor="specialization" className="block text-sm">
-                    Specialization
-                  </label>
-                  <input
-                    type="text"
-                    name="specialization"
-                    id="specialization"
-                    placeholder="e.g., Cardiologist"
-                    required
-                    className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="license" className="block text-sm">
-                    License Number
-                  </label>
-                  <input
-                    type="text"
-                    name="license"
-                    id="license"
-                    placeholder="Your License Number"
-                    required
-                    className="w-full px-3 py-2 border rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
-                  />
-                </div>
-              </>
-            )}
           </div>
 
           <button
