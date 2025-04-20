@@ -14,7 +14,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Doctor from "./pages/Doctor";
 import BookAppointments from "./pages/BookAppointments";
 import SignUp from "./pages/SignUp";
-import AdminDoctor from "./pages/AdminDoctor";
 import Chatbot from "./pages/Chatbot";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,13 +33,12 @@ const App = () => {
         <Route path="/donner" element={<Doneters />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/my-appointment" element={<MyAppointment />} />
+        <Route path="/my-appointments" element={<MyAppointment />} />
         <Route path="/doctors" element={<Doctor />} />
         <Route path="/doctors/:speciality" element={<Doctor />} />
         <Route path="/book-appointment/:docId" element={<BookAppointments />} />
         <Route path="/my-profile" element={<MyProfile />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/admin-doctor" element={<AdminDoctor />} />
         <Route path="/chatbot" element={<Chatbot />} />
       </Routes>
 

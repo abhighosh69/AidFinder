@@ -2,8 +2,9 @@ import validator from "validator";
 import bcrypt from "bcrypt";
 import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
-import {v2 as cloudinary} from 'cloudinary'
-
+import { v2 as cloudinary } from "cloudinary";
+import doctorModel from "../models/doctorModel.js";
+import appointmentModel from "../models/appointmentModel.js";
 
 //API to register user
 const registerUser = async (req, res) => {
@@ -50,25 +51,22 @@ const registerUser = async (req, res) => {
 // API for user login
 const loginUser = async (req, res) => {
   try {
+    const { email, password } = req.body;
 
-    const {email, password} = req.body;
-
-    const user =await userModel.findOne({email});
+    const user = await userModel.findOne({ email });
 
     if (!user) {
-        return res.json({ success: false, message: "User dose not exist" });
+      return res.json({ success: false, message: "User dose not exist" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (isMatch) {
-        const token = jwt.sign({id:user._id}, process.env.JWT_SECRET);
-        res.json({success:true, token});
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+      res.json({ success: true, token });
     } else {
-        res.json({success:false, message: "Invalid Password"});
+      res.json({ success: false, message: "Invalid Password" });
     }
-
-
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
@@ -82,12 +80,11 @@ const getProfile = async (req, res) => {
     const userData = await userModel.findById(userId);
 
     res.json({ success: true, userData });
-
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
   }
-}
+};
 
 // API to update user profile data
 const updateProfile = async (req, res) => {
@@ -115,7 +112,7 @@ const updateProfile = async (req, res) => {
 
     if (imageFile?.path) {
       const imageUpload = await cloudinary.uploader.upload(imageFile.path, {
-        resource_type: 'image',
+        resource_type: "image",
       });
       updateFields.image = imageUpload.secure_url;
     }
@@ -123,12 +120,66 @@ const updateProfile = async (req, res) => {
     await userModel.findByIdAndUpdate(userId, updateFields);
 
     res.json({ success: true, message: "Profile updated successfully" });
-
   } catch (error) {
     console.log("Update profile error:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
+// API to book appointments
+const bookAppointment = async (req, res) => {
+  try {
+    const { userId, docId, slotDate, slotTime } = req.body;
 
-export { registerUser, loginUser, getProfile, updateProfile};
+    const docData = await doctorModel.findById(docId).select("-password");
+
+    /* console.log(docData); */
+
+    if (!docData.available) {
+      return res.json({ success: false, message: "Doctor is not available" });
+    }
+
+    let slots_booked = docData.slots_booked;
+
+    //checking for slots availability
+    if (slots_booked[slotDate]) {
+      if (slots_booked[slotDate].includes(slotTime)) {
+        return res.json({ success: false, message: "Slot already booked" });
+      } else {
+        slots_booked[slotDate].push(slotTime);
+      }
+    } else {
+      slots_booked[slotDate] = [];
+      slots_booked[slotDate].push(slotTime);
+    }
+
+    const userData = await userModel.findById(userId).select("-password");
+
+    delete docData.slots_booked;
+
+    const appointmentData = {
+      userId,
+      docId,
+      slotDate,
+      slotTime,
+      userData,
+      docData,
+      amount: docData.fees,
+      date: Date.now(),
+    };
+
+    const newAppointment = new appointmentModel(appointmentData);
+    await newAppointment.save();
+
+    // save new slots in doctor data
+    await doctorModel.findByIdAndUpdate(docId, {
+      slots_booked,
+    });
+    res.json({ success: true, message: "Appointment booked successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export { registerUser, loginUser, getProfile, updateProfile, bookAppointment };

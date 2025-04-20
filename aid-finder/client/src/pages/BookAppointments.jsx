@@ -1,13 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assetsFrontend/assets";
 import ReleatedDoctors from "../components/ReleatedDoctors";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const BookAppointments = () => {
   const { docId } = useParams();
-  const { doctors, currencySymbol } = useContext(AppContext);
+  const { doctors, currencySymbol, backendUrl, token, getDoctorsData } =
+    useContext(AppContext);
   const dayOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  const navigate = useNavigate();
 
   const [docInfo, SetDocInfo] = useState("");
   const [docSlots, SetDocSlots] = useState([]);
@@ -22,21 +27,21 @@ const BookAppointments = () => {
 
   const getAvailableSlots = async () => {
     SetDocSlots([]);
-  
+
     // Getting the current date and time
     let now = new Date();
     let today = new Date(); // Ensure 'today' is defined
-  
+
     for (let i = 0; i < 7; i++) {
       // Getting date with index
       let currentDate = new Date(today);
       currentDate.setDate(today.getDate() + i);
-  
+
       // Setting end time of the date with index
       let endTime = new Date();
       endTime.setDate(today.getDate() + i);
       endTime.setHours(21, 0, 0, 0);
-  
+
       // Setting hours
       if (today.getDate() === currentDate.getDate()) {
         currentDate.setHours(
@@ -47,9 +52,9 @@ const BookAppointments = () => {
         currentDate.setHours(10);
         currentDate.setMinutes(0);
       }
-  
+
       let timeSlots = [];
-  
+
       while (currentDate < endTime) {
         // Check if the current time slot is in the future
         if (currentDate > now) {
@@ -57,22 +62,72 @@ const BookAppointments = () => {
             hour: "2-digit",
             minute: "2-digit",
           });
-  
-          // Add valid future slots to the array
-          timeSlots.push({
-            datetime: new Date(currentDate),
-            time: formattedTime,
-          });
+
+          let day = currentDate.getDate();
+          let month = currentDate.getMonth() + 1; 
+          let year = currentDate.getFullYear();
+
+          const slotDate = day + "_" + month + "_" + year;
+          const slotTime = formattedTime;
+
+          const isSlotAvailable = docInfo &&
+            docInfo.slots_booked[slotDate] &&
+            docInfo.slots_booked[slotDate].includes(slotTime)
+              ? false
+              : true;
+
+          if (isSlotAvailable) {
+            // Add valid future slots to the array
+            timeSlots.push({
+              datetime: new Date(currentDate),
+              time: formattedTime,
+            });
+          }
         }
-  
+
         // Increment current time by 30 mins
         currentDate.setMinutes(currentDate.getMinutes() + 30);
       }
-  
+
       SetDocSlots((prev) => [...prev, timeSlots]);
     }
   };
-  
+
+  const bookAppointment = async (params) => {
+    if (!token) {
+      toast.warn("Please login to book an appointment.");
+      return navigate("/login");
+    }
+    try {
+      const date = docSlots[slotIndex][0].datetime;
+
+      let day = date.getDate();
+      let month = date.getMonth() + 1; // Months are zero-based in JavaScript
+      let year = date.getFullYear();
+
+      const slotDate = day + "_" + month + "_" + year;
+
+      //console.log(slotDate);
+
+      const { data } = await axios.post(
+        backendUrl + "api/user/book-appointment",
+        { docId, slotDate, slotTime },
+        { headers: { token } }
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+        getDoctorsData();
+        navigate("/my-appointments");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error("Error booking appointment:", error);
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
@@ -172,7 +227,10 @@ const BookAppointments = () => {
                   </p>
                 ))}
               </div>
-              <button className="bg-primary text-white text-lg font-light px-14 py-3 rounded-full my-6">
+              <button
+                className="bg-primary text-white text-lg font-light px-14 py-3 rounded-full my-6"
+                onClick={bookAppointment}
+              >
                 Book an appointment
               </button>
             </div>
