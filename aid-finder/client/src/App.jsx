@@ -6,7 +6,6 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Doneters from "./pages/Doneters";
 import Login from "./pages/Login";
-import MyAppointment from "./pages/MyAppointments";
 import MyProfile from "./pages/MyProfile";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -17,6 +16,8 @@ import SignUp from "./pages/SignUp";
 import Chatbot from "./pages/Chatbot";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MyAppointments from "./pages/MyAppointments";
+
 
 const App = () => {
   return (
@@ -33,7 +34,7 @@ const App = () => {
         <Route path="/donner" element={<Doneters />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/my-appointments" element={<MyAppointment />} />
+        <Route path="/my-appointments" element={<MyAppointments />} />
         <Route path="/doctors" element={<Doctor />} />
         <Route path="/doctors/:speciality" element={<Doctor />} />
         <Route path="/book-appointment/:docId" element={<BookAppointments />} />
