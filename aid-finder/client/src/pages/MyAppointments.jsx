@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const MyAppointments = () => {
-  const { backendUrl, token } = useContext(AppContext);
+  const { backendUrl, token, getDoctorsData } = useContext(AppContext);
 
   const [appointments, setAppointments] = useState([]);
   const months = [
@@ -25,8 +25,10 @@ const MyAppointments = () => {
 
   const slotDateFormatter = (slotDate) => {
     const dateArray = slotDate.split("_");
-    return dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2];
-  }
+    return (
+      dateArray[0] + " " + months[Number(dateArray[1])] + " " + dateArray[2]
+    );
+  };
 
   const getUserAppointments = async () => {
     try {
@@ -42,6 +44,29 @@ const MyAppointments = () => {
       }
     } catch (error) {
       console.log("Error in getUserAppointment", error);
+      toast.error(error.message);
+    }
+  };
+
+  const cancelAppointment = async (appointmentId) => {
+    try {
+      console.log("cancelAppointment", appointmentId);
+
+      const { data } = await axios.post(
+        backendUrl + "api/user/cancel-appointment",
+        { appointmentId },
+        { headers: { token } }
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+        getUserAppointments();
+        getDoctorsData();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log("Error in cancelAppointment", error);
       toast.error(error.message);
     }
   };
@@ -87,12 +112,26 @@ const MyAppointments = () => {
             </div>
             <div></div>
             <div className="flex flex-col gap-2 justify-end">
-              <button className="text-base text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300">
-                Pay Online
-              </button>
-              <button className="text-base text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300">
-                Cancel Appointment
-              </button>
+              {!item.cancelled && (
+                <button className="text-base text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300">
+                  Pay Online
+                </button>
+              )}
+              {!item.cancelled && (
+                <button
+                  onClick={() => {
+                    cancelAppointment(item._id);
+                  }}
+                  className="text-base text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-600 hover:text-white transition-all duration-300"
+                >
+                  Cancel Appointment
+                </button>
+              )}
+              {item.cancelled && (
+                <p className="text-base text-red-600 text-center sm:min-w-48 py-2 border rounded bg-red-50">
+                  Appointment Cancelled
+                </p>
+              )}
             </div>
           </div>
         ))}

@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   const handleToMyAppointment = () => {
-    navigate("/my-appointment");
+    navigate("/my-appointments");
   };
 
   const handleLogout = () => {
