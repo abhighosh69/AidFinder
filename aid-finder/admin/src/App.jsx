@@ -10,6 +10,7 @@ import Dashboard from "./pages/AdminFolder/Dashboard"
 import DoctorList from "./pages/AdminFolder/DoctorList";
 import AllAppointments from "./pages/AdminFolder/AllAppointments";
 import AddDoctor from "./pages/AdminFolder/AddDoctor"
+import UserList from "./pages/AdminFolder/UserList"
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/all-appointments" element={<AllAppointments/>} />
           <Route path="/add-doctor" element={<AddDoctor/>} />
           <Route path="/doctor-list" element={<DoctorList/>} />
+          <Route path="/user-list" element={<UserList/>} />
         </Routes>
       </div>
     </div>

@@ -25,7 +25,7 @@ const MyProfile = () => {
 
       formData.append('name', userData.name);
       formData.append('phone', userData.phone);
-      formData.append('address', JSON.stringify(parsedAddress));
+      formData.append('address', JSON.stringify(userData.address));
       formData.append('dob', userData.dob);
       formData.append('gender',userData.gender);
       formData.append('password', userData.password);
@@ -121,10 +121,10 @@ const MyProfile = () => {
                   onChange={(e) =>
                     setUserData((prev) => ({
                       ...prev,
-                      address: JSON.stringify({
-                        ...parsedAddress,
+                      address: {
+                        ...prev.address,
                         line1: e.target.value || "",
-                      }),
+                      },
                     }))
                   }
                   value={parsedAddress.line1}
@@ -136,10 +136,10 @@ const MyProfile = () => {
                   onChange={(e) =>
                     setUserData((prev) => ({
                       ...prev,
-                      address: JSON.stringify({
-                        ...parsedAddress,
+                      address: {
+                        ...prev.address,
                         line2: e.target.value || "",
-                      }),
+                      },
                     }))
                   }
                   value={parsedAddress.line2 || ""}
