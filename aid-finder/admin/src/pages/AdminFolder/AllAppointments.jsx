@@ -6,6 +6,8 @@ import { assets } from "../../assets/assetsAdmin/assets.js";
 const AllAppointments = () => {
   const { getAllAppointments, appointments, aToken, cancelAppointment } = useContext(AdminContext);
 
+ 
+
   const { calculateAge, slotDateFormatter, currency } = useContext(AppContext);
 
   useEffect(() => {

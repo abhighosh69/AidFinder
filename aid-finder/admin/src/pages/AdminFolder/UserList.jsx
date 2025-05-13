@@ -16,7 +16,7 @@ const UserList = () => {
     <div className="m-5 max-h-[90vh] overflow-y-scroll">
       <h1 className="text-lg font-medium">All Users</h1>
       <div className="flex flex-wrap gap-4 p-4">
-        {users.map((item, index) => (
+        {(users || []).map((item, index) => (
           <div
             onClick={() => {
               setSelectedUser(item);

@@ -155,7 +155,6 @@ const cancelAppointmentByAdmin = async (req, res) => {
 
     const appointmentData = await appointmentModel.findById(appointmentId);
 
-    
     await appointmentModel.findByIdAndUpdate(appointmentId, {
       cancelled: true,
     });
@@ -185,4 +184,36 @@ const cancelAppointmentByAdmin = async (req, res) => {
   }
 };
 
-export { addDoctor, adminLogin, allDoctors, allUsers, allAppointmentsAdmin, cancelAppointmentByAdmin };
+// API for admin dashboard
+const adminDashboard = async (req, res) => {
+  try {
+    const totalDoctors = await doctorModel.find({});
+    const totalUsers = await userModel.find({});
+    const totalAppointments = await appointmentModel.find({});
+
+    const dashData = {
+      totalDoctors: totalDoctors.length,
+      totalUsers: totalUsers.length,
+      totalAppointments: totalAppointments.length,
+      lastAppointments: totalAppointments.reverse().slice(0, 5),
+    };
+
+    res.json({
+      success: true,
+      dashData,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export {
+  addDoctor,
+  adminLogin,
+  allDoctors,
+  allUsers,
+  allAppointmentsAdmin,
+  cancelAppointmentByAdmin,
+  adminDashboard,
+};
