@@ -3,35 +3,46 @@ import { assets } from "../assets/assetsAdmin/assets.js";
 import { AdminContext } from "../context/AdminContext.jsx";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import { DoctorContext } from "../context/DoctorContext.jsx";
 
 const Login = () => {
   const [state, setState] = useState("Admin");
-  const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { setAToken, backendUrl } = useContext(AdminContext);
+  const { setDToken } = useContext(DoctorContext);
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     try {
-        if (state==='Admin') {
-            const {data} = await axios.post(backendUrl+ 'api/admin/login', {email, password});
-            if (data.success) {
-                localStorage.setItem('aToken', data.token);
-                setAToken(data.token); 
-            }else{
-                toast.error(data.message);
-            }
-        }else{
-
+      if (state === "Admin") {
+        const { data } = await axios.post(backendUrl + "api/admin/login", {
+          email,
+          password,
+        });
+        if (data.success) {
+          localStorage.setItem("aToken", data.token);
+          setAToken(data.token);
+        } else {
+          toast.error(data.message);
         }
-    } catch (error) {
-        
-    }
-
+      } else {
+        const { data } = await axios.post(backendUrl + "api/doctor/login", {
+          email,
+          password,
+        });
+        if (data.success) {
+          localStorage.setItem("dToken", data.token);
+          setDToken(data.token);
+          console.log(data.token);
+          
+        } else {
+          toast.error(data.message);
+        }
+      }
+    } catch (error) {}
   };
-
 
   return (
     <form onSubmit={onSubmitHandler} className="min-h-[80vh] flex items-center">
@@ -41,7 +52,9 @@ const Login = () => {
         </p>
         <div className="w-full">
           <p>Email</p>
-          <input onChange={(e) => setEmail(e.target.value)} value={email}
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
             className="border border-[#DADADA] rounded w-full p-2 mt-1"
             type="email"
             required
@@ -49,7 +62,9 @@ const Login = () => {
         </div>
         <div className="w-full">
           <p>Password</p>
-          <input onChange={(e) => setPassword(e.target.value)} value={password}
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
             className="border border-[#DADADA] rounded w-full p-2 mt-1"
             type="password"
             required
@@ -59,9 +74,27 @@ const Login = () => {
           Login
         </button>
         {state === "Admin" ? (
-          <p>Doctor Login?<span className="text-primary underline cursor-pointer" onClick={() => setState("Doctor")} > Click here...</span></p>
+          <p>
+            Doctor Login?
+            <span
+              className="text-primary underline cursor-pointer"
+              onClick={() => setState("Doctor")}
+            >
+              {" "}
+              Click here...
+            </span>
+          </p>
         ) : (
-          <p>Admin Login?<span className="text-primary underline cursor-pointer" onClick={() => setState("Admin")} > Click here...</span></p>
+          <p>
+            Admin Login?
+            <span
+              className="text-primary underline cursor-pointer"
+              onClick={() => setState("Admin")}
+            >
+              {" "}
+              Click here...
+            </span>
+          </p>
         )}
       </div>
     </form>
