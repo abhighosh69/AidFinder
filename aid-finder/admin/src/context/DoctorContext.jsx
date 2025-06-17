@@ -15,6 +15,8 @@ const DoctorContextProider = ({ children }) => {
 
   const [dashData, setDashData] = useState(false);
 
+  const [doctorData, setDoctorData] = useState(false);
+
   const getAppointments = async () => {
     try {
       const { data } = await axios.get(backendUrl + "api/doctor/appointments", {
@@ -81,7 +83,23 @@ const DoctorContextProider = ({ children }) => {
       } else {
         toast.error(data.message);
       }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
 
+  const getProfileData = async () => {
+    try {
+      const { data } = await axios.get(backendUrl + "api/doctor/profile", {
+        headers: { dToken },
+      });
+      if (data.success) {
+        setDoctorData(data.doctorData);
+        console.log(data.doctorData);
+      } else {
+        toast.error(data.message);
+      }
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -100,6 +118,9 @@ const DoctorContextProider = ({ children }) => {
     getDashData,
     dashData,
     setDashData,
+    getProfileData,
+    doctorData,
+    setDoctorData,
   };
 
   return (

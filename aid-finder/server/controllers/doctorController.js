@@ -139,7 +139,7 @@ const doctorDashboard = async (req, res) => {
       if (item.isCompleted || item.payment) {
         earnings += item.amount;
       }
-    })
+    });
 
     let patients = [];
 
@@ -149,20 +149,62 @@ const doctorDashboard = async (req, res) => {
       }
     });
 
-    const dashData ={
+    const dashData = {
       earnings,
       appointments: appointments.length,
       patients: patients.length,
       latestAppointments: appointments.reverse().slice(0, 5),
-    }
+    };
 
     res.json({ success: true, dashData });
-
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
   }
 };
 
+// API to get doctor data for doctor panel
+const getDoctorData = async (req, res) => {
+  try {
+    const { docId } = req.body;
+    const doctorData = await doctorModel.findById(docId).select(["-email", "-password"]);
 
-export { changeAvailability, doctorList, doctorLogin, getDocAppointments, appointmentCanceled, appointmentCompleted, doctorDashboard };
+    res.json({ success: true, doctorData });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+// API to set doctor data for doctor panel
+const setDoctorData = async (req, res) => {
+  try {
+    const { docId, available, fees, about } = req.body;
+
+    await doctorModel.findByIdAndUpdate(docId, {
+      available,
+      fees,
+      about,
+    });
+
+    res.json({
+      success: true,
+      message: "Doctor data updated successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export {
+  changeAvailability,
+  doctorList,
+  doctorLogin,
+  getDocAppointments,
+  appointmentCanceled,
+  appointmentCompleted,
+  doctorDashboard,
+  getDoctorData,
+  setDoctorData,
+};
