@@ -79,7 +79,7 @@ const Hospitals = () => {
 
             const popup = new mapboxgl.Popup()
               .setLngLat(coordinates)
-              .setHTML(`<strong>${name}</strong>`)
+              .setHTML(<strong>${name}</strong>)
               .addTo(map.current);
           });
 
