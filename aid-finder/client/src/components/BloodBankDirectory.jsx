@@ -3,7 +3,7 @@ import { bloodBanks} from "../assets/assetsFrontend/assets.js"
 
 const BloodBankDirectory = () => {
   return (
-    <div>
+    <div className="max-w-6xl mx-auto p-6">
       <table className="min-w-full bg-white border border-gray-300 rounded-md shadow-md">
         <thead>
           <tr className="bg-primary text-white text-left">

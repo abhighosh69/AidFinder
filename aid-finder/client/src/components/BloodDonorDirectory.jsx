@@ -1,23 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { FaTint, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 const BloodDonorDirectory = () => {
   const { bloodDonors, loadingBloodDonors } = useContext(AppContext);
+  const [selectedGroup, setSelectedGroup] = useState("");
+
+  const bloodGroups = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
+
+  // Filter logic
+  const filteredDonors = selectedGroup
+    ? bloodDonors.filter((donor) => donor.blood_group === selectedGroup)
+    : bloodDonors;
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <h2 className="text-3xl font-semibold text-center mb-6 text-primary">
-        Available Blood Donors
-      </h2>
+      {/* Filter Dropdown */}
+      <div className="flex justify-center mb-6">
+        <select
+          value={selectedGroup}
+          onChange={(e) => setSelectedGroup(e.target.value)}
+          className="border border-gray-300 p-2 rounded-md shadow-sm"
+        >
+          <option value="">All Blood Groups</option>
+          {bloodGroups.map((group) => (
+            <option key={group} value={group}>
+              {group}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {loadingBloodDonors ? (
         <p className="text-center text-gray-500">Loading donors...</p>
-      ) : bloodDonors.length === 0 ? (
+      ) : filteredDonors.length === 0 ? (
         <p className="text-center text-gray-500">No donors found.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {bloodDonors.map((donor) => (
+          {filteredDonors.map((donor) => (
             <div
               key={donor._id}
               className="border p-4 rounded-xl shadow hover:shadow-md transition"
