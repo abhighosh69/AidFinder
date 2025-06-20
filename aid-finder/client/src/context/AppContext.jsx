@@ -14,6 +14,8 @@ const AppContextProvider = (props) => {
   );
   const [userData, setUserData] = useState(false);
 
+  const [bloodDonors, setBloodDonors] = useState([]);
+
   const getDoctorsData = async () => {
     try {
       const { data } = await axios.get(backendUrl + "api/doctor/list");
@@ -22,6 +24,18 @@ const AppContextProvider = (props) => {
       } else {
         toast.error(data.message);
       }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
+  const loadBloodDonorsData = async () => {
+    try {
+      const res = await axios.get(
+        backendUrl + "api/user/show-blood-donors"
+      );
+      setBloodDonors(res.data.data || []);
     } catch (error) {
       console.log(error);
       toast.error(error.message);
@@ -55,7 +69,14 @@ const AppContextProvider = (props) => {
     userData,
     setUserData,
     loadUserProfileData,
+    bloodDonors,
+    setBloodDonors,
+    loadBloodDonorsData,
   };
+
+  useEffect(() => {
+    loadBloodDonorsData();
+  }, []);
 
   useEffect(() => {
     getDoctorsData();

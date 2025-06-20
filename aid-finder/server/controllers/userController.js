@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import { v2 as cloudinary } from "cloudinary";
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
+import bloodBankModel from "../models/bloodBankModel.js";
 
 //API to register user
 const registerUser = async (req, res) => {
@@ -183,7 +184,6 @@ const bookAppointment = async (req, res) => {
 };
 
 // API to get user appointments for frontend my-appointments page
-
 const listAppointments = async (req, res) => {
   try {
     const { userId } = req.body;
@@ -237,106 +237,62 @@ const cancelAppointment = async (req, res) => {
   }
 };
 
-// API to make payment for appointment using PhonePe
-
-/* const paymentRazorpay = async (req, res) => {
-
-}; */
-
-/* const newPayment = async (req, res) => {
+// create blood donner API
+const createBloodDonor = async (req, res) => {
   try {
-    const merchantTransactionId = req.body.transactionId;
+    const { name, email, phone_no, blood_group, address } = req.body;
 
-    const data = {
-      merchantId: merchant_id,
-      merchantTransactionId: merchantTransactionId,
-      merchantUserId: req.body.MUID,
-      name: req.body.name,
-      amount: req.body.amount * 100,
-      redirectUrl: `http://localhost:8080/api/status/${merchantTransactionId}`,
-      redirectMode: "POST",
-      mobileNumber: req.body.number,
-      paymentInstrument: {
-        type: "PAY_PAGE",
-      },
-    };
-    const payload = JSON.stringify(data);
-    const payloadMain = Buffer.from(payload).toString("base64");
-    const keyIndex = 1;
-    const string = payloadMain + "/pg/v1/pay" + salt_key;
-    const sha256 = crypto.createHash("sha256").update(string).digest("hex");
-    const checksum = sha256 + "###" + keyIndex;
-
-    const prod_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
-    const options = {
-      method: "POST",
-      url: prod_URL,
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-        "X-VERIFY": checksum,
-      },
-      data: {
-        request: payloadMain,
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-        return res.redirect(
-          response.data.data.instrumentResponse.redirectInfo.url
-        );
-      })
-      .catch(function (error) {
-        console.error(error);
+    if (!name || !email || !phone_no || !blood_group || !address) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required.",
       });
-  } catch (error) {
-    res.status(500).send({
-      message: error.message,
-      success: false,
+    }
+
+    // Validating email format
+    if (!validator.isEmail(email)) {
+      return res.json({ success: false, message: "Enter a valid email" });
+    }
+
+    // Validating phone number
+    if (!validator.isMobilePhone(phone_no.toString(), "any")) {
+      return res.json({
+        success: false,
+        message: "Enter a valid phone number",
+      });
+    }
+
+    const bloodDonorData = {
+      name,
+      email,
+      phone_no,
+      blood_group,
+      address,
+    };
+
+    const bloodDonor = new bloodBankModel(bloodDonorData);
+    await bloodDonor.save();
+
+    res.status(201).json({
+      success: true,
+      message: "Blood donor created successfully",
     });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-const checkStatus = async (req, res) => {
-  const merchantTransactionId = res.req.body.transactionId;
-  const merchantId = res.req.body.merchantId;
-
-  const keyIndex = 1;
-  const string =
-    `/pg/v1/status/${merchantId}/${merchantTransactionId}` + salt_key;
-  const sha256 = crypto.createHash("sha256").update(string).digest("hex");
-  const checksum = sha256 + "###" + keyIndex;
-
-  const options = {
-    method: "GET",
-    url: `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${merchantTransactionId}`,
-    headers: {
-      accept: "application/json",
-      "Content-Type": "application/json",
-      "X-VERIFY": checksum,
-      "X-MERCHANT-ID": `${merchantId}`,
-    },
-  };
-
-  // CHECK PAYMENT TATUS
-  axios
-    .request(options)
-    .then(async (response) => {
-      if (response.data.success === true) {
-        const url = `http://localhost:3000/success`;
-        return res.redirect(url);
-      } else {
-        const url = `http://localhost:3000/failure`;
-        return res.redirect(url);
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}; */
+// show all blood donors
+const showBloodDonors = async (req, res) => {
+  try {
+    const bloodDonors = await bloodBankModel.find({});
+    res.status(200).json({ success: true, data: bloodDonors });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 export {
   registerUser,
@@ -346,4 +302,6 @@ export {
   bookAppointment,
   listAppointments,
   cancelAppointment,
+  createBloodDonor,
+  showBloodDonors,
 };

@@ -1,88 +1,46 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import BloodDonorForm from "../components/BloodDonorForm";
+import BloodDonorDirectory from "../components/BloodDonorDirectory";
+import BloodBankDirectory from "../components/BloodBankDirectory";
 
 const Doneters = () => {
-  
-  const bloodBanks = [
-    {
-      name: "Kothari Medical Centre Blood Bank",
-      contact: "+91 86977 08130, +91 83350 61403",
-      address: "8/3, Alipore Road, Kolkata-700027",
-    },
-    {
-      name: "Ruby General Hospital Blood Centre",
-      contact: "+91 98313 44466",
-      address: "E.M. Bypass, Anandapur, Kolkata",
-    },
-    {
-      name: "Life Care Blood Centre",
-      contact: "+91 93310 58408",
-      address: "11/A, Sarat Bose Road, Kolkata",
-    },
-    {
-      name: "Tata Medical Center Blood Bank",
-      contact: "+91 33 6605 7603, +91 33 6605 7615",
-      address: "Rajarhat, Kolkata",
-    },
-    {
-      name: "Marwari Relief Society Blood Bank",
-      contact: "+91 33 2241 3140",
-      address: "227, Rabindra Sarani, Kolkata-700007",
-    },
-    {
-      name: "SJAS Blood Centre",
-      contact: "+91 33 2422 8454",
-      address: "Jadavpur, Kolkata",
-    },
-    {
-      name: "Miracare Hospital Blood Bank",
-      contact: "+91 33 2417 2535",
-      address: "Tollygunge, Kolkata",
-    },
-    {
-      name: "Shristi Blood Center",
-      contact: "+91 33 2555 7878",
-      address: "Maniktala, Kolkata",
-    },
-    {
-      name: "Apollo Gleneagles Hospitals Blood Bank",
-      contact: "+91 33 2320 3040",
-      address: "Canal Circular Road, Kolkata",
-    },
-    {
-      name: "AMRI Hospitals Blood Bank",
-      contact: "+91 33 2431 7070",
-      address: "Dhakuria, Kolkata",
-    },
-  ];
+  const { loadBloodDonorsData } = useContext(AppContext);
 
   return (
-    <div className="container mx-auto mt-8">
-      <h1 className="text-2xl font-bold text-center mb-6">Blood Bank Directory</h1>
-      <table className="min-w-full bg-white border border-gray-300 rounded-md shadow-md">
-        <thead>
-          <tr className="bg-primary text-white text-left">
-            <th className="px-4 py-2 border">Sl No.</th>
-            <th className="px-4 py-2 border">Name</th>
-            <th className="px-4 py-2 border">Contact</th>
-            <th className="px-4 py-2 border">Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          {bloodBanks.map((bank, index) => (
-            <tr
-              key={index}
-              className={`${index % 2 === 0 ? "bg-gray-100" : "bg-gray-50"} hover:bg-blue-100`}
-            >
-              <td className="px-4 py-2 border text-center">{index + 1}</td>
-              <td className="px-4 py-2 border">{bank.name}</td>
-              <td className="px-4 py-2 border">{bank.contact}</td>
-              <td className="px-4 py-2 border">{bank.address}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container mx-auto px-4 py-8 space-y-12">
+      {/* Section Nav (Optional) */}
+      <nav className="flex gap-6 justify-center text-primary font-semibold mb-8">
+        <a href="#register" className="hover:underline">Register</a>
+        <a href="#donors" className="hover:underline">Donors</a>
+        <a href="#banks" className="hover:underline">Blood Banks</a>
+      </nav>
+
+      {/* Blood Donor Registration */}
+      <section id="register">
+        <h2 className="text-3xl font-semibold text-center mb-6 text-primary">
+          Blood Donor Registration
+        </h2>
+        <BloodDonorForm onSuccess={loadBloodDonorsData}/>
+      </section>
+
+      {/* Live Blood Donor List */}
+      <section id="donors">
+        <h2 className="text-3xl font-semibold text-center mb-6 text-primary">
+          Live Blood Donor Directory
+        </h2>
+        <BloodDonorDirectory />
+      </section>
+
+      {/* Static Blood Bank Directory */}
+      <section id="banks">
+        <h2 className="text-3xl font-semibold text-center mb-6 text-primary">
+          Nearby Blood Banks
+        </h2>
+        <BloodBankDirectory />
+      </section>
     </div>
   );
 };
 
-export default Doneters
+export default Doneters;
